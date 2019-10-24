@@ -8,6 +8,9 @@ class User(models.Model):
     user_age = models.CharField(max_length=3, verbose_name="年龄")
     user_position = models.CharField(max_length=10, verbose_name="职位")
 
+    def __str__(self):
+        return self.user_name
+
 
 class Project(models.Model):
     id = models.AutoField(primary_key=True)
@@ -15,3 +18,6 @@ class Project(models.Model):
     project_version = models.CharField(max_length=10, verbose_name="项目版本")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     create_name = models.ForeignKey("User", on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.project_name
